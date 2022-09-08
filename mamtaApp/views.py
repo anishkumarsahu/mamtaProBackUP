@@ -1704,19 +1704,19 @@ def loginApp(request):
         if user is not None:
             login(request, user)
             login_or_logout(request, 'Login')
-            if 'Sales' in request.user.groups.values_list('name', flat=True):
-                return redirect('/invoice/')
-            if 'Accountant' in request.user.groups.values_list('name', flat=True):
-                return redirect('/invoice/collection_report_accountant/')
+            # if 'Sales' in request.user.groups.values_list('name', flat=True):
+            #     return redirect('/invoice/')
+            # if 'Accountant' in request.user.groups.values_list('name', flat=True):
+            #     return redirect('/invoice/collection_report_accountant/')
             if 'Both' in request.user.groups.values_list('name', flat=True):
                 return redirect('/')
 
-            if 'System' in request.user.groups.values_list('name', flat=True):
-                return redirect('/attendance/attendance/')
-            if 'Supply' in request.user.groups.values_list('name', flat=True):
-                return redirect('/supplyHome/')
-            if 'Cashier' in request.user.groups.values_list('name', flat=True):
-                return redirect('/cashierHome/')
+            # if 'System' in request.user.groups.values_list('name', flat=True):
+            #     return redirect('/attendance/attendance/')
+            # if 'Supply' in request.user.groups.values_list('name', flat=True):
+            #     return redirect('/supplyHome/')
+            # if 'Cashier' in request.user.groups.values_list('name', flat=True):
+            #     return redirect('/cashierHome/')
 
         else:
             messages.success(request, "Wrong Credential! Please try again.")

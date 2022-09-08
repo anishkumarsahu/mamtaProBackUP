@@ -199,7 +199,7 @@ JWT_AUTH = {
 
 }
 
-PWA_APP_NAME = '123DACN'
+PWA_APP_NAME = '789DACN'
 PWA_APP_DESCRIPTION = "Credit Management System."
 PWA_APP_THEME_COLOR = '#3F51B5'
 PWA_APP_DISPLAY = 'standalone'

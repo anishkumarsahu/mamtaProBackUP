@@ -793,6 +793,7 @@ def genereate_attendence_report(request):
                 p_count = 0
                 a_count = 0
                 na_count = 0
+                hd_count = 0
                 att = []
                 for i in range(1, calendar.monthrange(start.year, start.month)[1] + 1):
                     if i < 10:
@@ -813,9 +814,18 @@ def genereate_attendence_report(request):
                             else:
                                 att.append('A')
                                 a_count = a_count + 1
+                        elif attend.loginTime is not None and attend.logoutTime is None:
+
+                            att.append('HD')
+                            hd_count = hd_count + 1
+
                         else:
-                            att.append('P')
-                            p_count = p_count + 1
+                            if attend.logoutTime.strftime("%H:%M:%S") < "16:00:00":
+                                att.append('HD')
+                                hd_count = hd_count + 1
+                            else:
+                                att.append('P')
+                                p_count = p_count + 1
                     except:
                         att.append('H')
                         na_count = na_count + 1
@@ -825,7 +835,8 @@ def genereate_attendence_report(request):
                     'attendance': att,
                     'A': a_count,
                     'P': p_count,
-                    'NA': na_count
+                    'NA': na_count,
+                    'HD': hd_count
 
                 }
                 emp_list.append(emp_dic)

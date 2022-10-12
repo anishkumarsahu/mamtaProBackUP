@@ -1706,8 +1706,8 @@ def loginApp(request):
             login_or_logout(request, 'Login')
             # if 'Sales' in request.user.groups.values_list('name', flat=True):
             #     return redirect('/invoice/')
-            # if 'Accountant' in request.user.groups.values_list('name', flat=True):
-            #     return redirect('/invoice/collection_report_accountant/')
+            if 'Accountant' in request.user.groups.values_list('name', flat=True):
+                return redirect('/invoice/collection_report_accountant/')
             if 'Both' in request.user.groups.values_list('name', flat=True):
                 return redirect('/')
 
